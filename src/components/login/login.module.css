@@ -25,6 +25,7 @@ button {
   width: 100%;
   margin-bottom: 0.5em;
   padding: 1em;
+  cursor: pointer;
 }
 
 button:hover {
