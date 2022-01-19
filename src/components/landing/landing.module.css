@@ -1,0 +1,16 @@
+@value makerGreen from '../../common/colors.css';
+
+.landing {
+  display: flex;
+  flex-direction: row;
+}
+.card_makers,
+.card_preview {
+  width: 50%;
+}
+
+.card_makers h2,
+.card_preview h2 {
+  text-align: center;
+  color: makerGreen;
+}

@@ -2,15 +2,23 @@ import React from "react";
 import styles from "./landing.module.css";
 import { auth } from "../../firebase/firebaseAuth";
 
-const Landing = (props) => {
-  const logout = () => {
-    auth.signOut();
-  };
+import { useNavigate } from "react-router-dom";
+
+const Landing = ({ loggedIn }) => {
+  let navigate = useNavigate();
+  if (!loggedIn) {
+    navigate("/");
+  }
+
   return (
-    <>
-      <h1>Landing page</h1>
-      <button onClick={logout}>Logout</button>
-    </>
+    <main className={styles.landing}>
+      <div className={styles.card_makers}>
+        <h2>Card Maker</h2>
+      </div>
+      <div className={styles.card_preview}>
+        <h2>Card Preview</h2>
+      </div>
+    </main>
   );
 };
 

@@ -1,20 +1,51 @@
-import "./app.css";
+import styles from "./app.module.css";
+import icon from "./img/card.png";
+
 import Login from "./components/login/login";
 import Landing from "./components/landing/landing";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { auth } from "./firebase/firebaseAuth";
-// import { useAuthState } from "react-firebase-hooks/auth";
+import React, { useEffect, useState } from "react";
 
 const App = () => {
-  // const [user] = useAuthState(auth);
+  const [user, setUser] = useState();
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+  }, [user]);
+
+  console.log(user);
 
   return (
     <div className='app'>
-      {/* {user ? <Login /> : <Landing />} */}
-      <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='app' element={<Landing />} />
-      </Routes>
+      <div className={styles.container}>
+        <div className={user ? styles.landing : styles.login}>
+          <header className={styles.header}>
+            <img className={styles.icon} src={icon} alt='card-icon' />
+            <h2 className={styles.title}>Business Card Maker</h2>
+            <button
+              className={user ? styles.logout : styles.hidden}
+              onClick={() => {
+                auth.signOut();
+                navigate("/");
+              }}
+            >
+              Logout
+            </button>
+          </header>
+
+          <Routes>
+            <Route path='/' element={<Login loggedIn={user} />} />
+            <Route path='app' element={<Landing loggedIn={user} />} />
+          </Routes>
+          <footer className={styles.footer}>
+            <p>Code your dream</p>
+          </footer>
+        </div>
+      </div>
     </div>
   );
 };
