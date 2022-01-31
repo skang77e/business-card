@@ -1,0 +1,36 @@
+@value makerBlack from '../../common/colors.css';
+@value makerWhite from '../../common/colors.css';
+@value makerShadow from '../../common/colors.css';
+@value makerColorful from '../../common/colors.css';
+
+.container {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  height: 15.625em;
+  box-shadow: 5px 5px 15px 5px makerShadow;
+  border-radius: 1em;
+  margin-bottom: 1em;
+}
+
+.container.dark {
+  background-color: makerBlack;
+  color: makerWhite;
+}
+
+.container.colorful {
+  background-image: makerColorful;
+  color: makerWhite;
+}
+
+.headshot {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+
+  margin-right: 1em;
+}
+
+.description {
+  width: 100%;
+}

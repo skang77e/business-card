@@ -17,8 +17,6 @@ const App = () => {
     });
   }, [user]);
 
-  console.log(user);
-
   return (
     <div className='app'>
       <div className={styles.container}>
