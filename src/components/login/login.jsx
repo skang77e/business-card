@@ -1,28 +1,34 @@
-import React from "react";
-import styles from "./login.module.css";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import Footer from '../footer/footer';
+import Header from '../header/header';
+import styles from './login.module.css';
 
-const Login = ({ authService, loggedIn }) => {
-  const onLogin = (event) => {
+const Login = ({ authService }) => {
+  const onLogin = event => {
     authService //
       .login(event.currentTarget.textContent)
-      .then(console.log());
+      .then(console.log);
   };
-  // let navigate = useNavigate();
-  // if (loggedIn) {
-  //   navigate("/app");
-  // }
-
   return (
-    <div className={styles.body}>
-      <h2>Login</h2>
-      <button onClick={onLogin} className={styles.google}>
-        Google
-      </button>
-      <button onClick={onLogin} className={styles.github}>
-        Github
-      </button>
-    </div>
+    <section className={styles.login}>
+      <Header />
+      <section>
+        <h1>Login</h1>
+        <ul className={styles.list}>
+          <li className={styles.item}>
+            <button className={styles.button} onClick={onLogin}>
+              Google
+            </button>
+          </li>
+          <li className={styles.item}>
+            <button className={styles.button} onClick={onLogin}>
+              Github
+            </button>
+          </li>
+        </ul>
+      </section>
+      <Footer />
+    </section>
   );
 };
 
