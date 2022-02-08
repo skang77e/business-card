@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Editor from "../editor/editor";
 import Footer from "../footer/footer";
 import Header from "../header/header";
+import Preview from "../preview/preview";
 import styles from "./maker.module.css";
 
 const Maker = ({ authService }) => {
@@ -19,11 +21,14 @@ const Maker = ({ authService }) => {
     });
   });
 
-  console.log(state);
   return (
     <section className={styles.maker}>
       <Header onLogout={onLogout} />
-      hello
+      <div className={styles.container}>
+        <Editor />
+        <Preview />
+      </div>
+
       <Footer />
     </section>
   );
