@@ -1,53 +1,45 @@
-@value makerGreen from '../../common/colors.css';
-@value makerWhite from '../../common/colors.css';
-@value makerLightGrey from '../../common/colors.css';
-@value makerBlack from '../../common/colors.css';
-
-.name,
-.company,
-.type {
-  width: 33%;
-  font-size: 1.25rem;
-}
-
-.occupation,
-.email,
-.file,
-.submit {
-  width: 50%;
-  font-size: 1.25rem;
-}
-
-.quote {
-  width: 100%;
-  font-size: 1rem;
-}
+@value makerBlack, makerWhite from '../../common/colors.css';
 
 .form {
-  margin-bottom: 1.25em;
-}
-
-.row {
   display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  border-top: 1px solid makerBlack;
+  border-left: 1px solid makerBlack;
+  margin-bottom: 1em;
 }
 
-.submit {
-  background-color: makerGreen;
-  color: makerWhite;
-  padding: 0.5em 1em;
-  cursor: pointer;
-  border: none;
-  font-weight: 700;
+.input,
+.textarea,
+.select,
+.button,
+.fileInput {
+  font-size: 0.8rem;
+  width: 100%;
+  border: 0;
+  padding: 0.5em;
+  border-bottom: 1px solid makerBlack;
+  border-right: 1px solid makerBlack;
+  background: makerWhite;
 }
 
-label {
-  background-color: makerLightGrey;
-  color: makerBlack;
-  padding: 0.5em 1em;
-  cursor: pointer;
-  width: 50%;
-  height: 100%;
-  font-size: 1.25rem;
-  text-align: center;
-  font-weight: 700;
+.input,
+.select {
+  flex: 1 1 30%;
+}
+
+.fileInput {
+  padding: 0;
+  flex: 1 1 50%;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus,
+.button:focus {
+  outline: 0;
+}
+
+.textarea {
+  flex-basis: 100%;
 }
