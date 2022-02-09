@@ -1,23 +1,37 @@
 import React from "react";
-import image from "../../img/card.png";
 import styles from "./card.module.css";
 
-const Card = ({ cardInfo }) => {
+const DEFAULT_IMAGE = "/src/img/card.png";
+
+const Card = ({ card }) => {
+  const { name, company, theme, title, email, message, fileName, fileURL } =
+    card;
+  const url = fileURL || DEFAULT_IMAGE;
   return (
-    <div className={styles.container}>
-      <div className={styles.colorSelect}>
-        <img src={image} alt='headshot' className={styles.headshot} />
-        <div className={styles.description}>
-          <h3 className='name'>{cardInfo.name}</h3>
-          <p className='company'>{cardInfo.company}</p>
-          <hr />
-          <p className='job-title'>{cardInfo.occupation}</p>
-          <p className='email'>{cardInfo.email}</p>
-          <p className='meesage'>{cardInfo.quote}</p>
-        </div>
+    <li className={`${styles.card} ${getStyles(theme)}`}>
+      <img className={styles.avatar} src={url} alt='profile photo' />
+      <div className={styles.info}>
+        <h1 className={styles.name}>{name}</h1>
+        <p className={styles.company}>{company}</p>
+        <p className={styles.title}>{title}</p>
+        <p className={styles.email}>{email}</p>
+        <p className={styles.message}>{message}</p>
       </div>
-    </div>
+    </li>
   );
 };
+
+function getStyles(theme) {
+  switch (theme) {
+    case "dark":
+      return styles.dark;
+    case "light":
+      return styles.light;
+    case "colorful":
+      return styles.colorful;
+    default:
+      throw new Error(`unknown theme ${theme}`);
+  }
+}
 
 export default Card;

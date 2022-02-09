@@ -1,36 +1,72 @@
 @value makerBlack from '../../common/colors.css';
 @value makerWhite from '../../common/colors.css';
+@value makerWheat from '../../common/colors.css';
+
 @value makerShadow from '../../common/colors.css';
 @value makerColorful from '../../common/colors.css';
 
-.container {
+.card {
   display: flex;
   align-items: center;
-  padding: 1em;
-  height: 15.625em;
-  box-shadow: 5px 5px 15px 5px makerShadow;
+  width: 100%;
   border-radius: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
+  padding: 0.2em 0;
+  background-color: yellow;
+  height: 15.625em;
+  box-shadow: 6px 6px 8px 0px makerShadow;
+  max-width: 30rem;
 }
 
-.container.dark {
+.card.dark {
   background-color: makerBlack;
   color: makerWhite;
 }
 
-.container.colorful {
-  background-image: makerColorful;
+.card.colorful {
+  background: makerColorful;
   color: makerWhite;
 }
 
-.headshot {
+.avatar {
   border-radius: 50%;
   width: 10em;
   height: 10em;
-
+  padding: 1em;
+  margin-left: 0.5em;
   margin-right: 1em;
 }
 
+.name,
+.company,
+.title,
+.email,
+.message {
+  margin: 0;
+  font-size: 0.8rem;
+  margin-bottom: 0.2em;
+}
+
+.name {
+  font-size: 1.2rem;
+}
+
+.company {
+  margin-bottom: 1em;
+}
+
+.info {
+  width: 100%;
+}
+
+.company:after {
+  content: "";
+  display: block;
+  width: 90%;
+  height: 2px;
+  background-color: makerWheat;
+  transform: translateY(0.5em);
+}
 .description {
   width: 100%;
 }
